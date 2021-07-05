@@ -74,6 +74,23 @@ public:
     }
 };
 
+class GenericPlayer : public Hand
+{
+private:
+    string name;
+public:
+    GenericPlayer(string n): name(n) { }
+    virtual void IsHitting() = 0;
+    bool IsBoosted()
+    {
+        return GetTotal() > 21;
+    }
+    void Bust() const
+    {
+        cout << "Player " << name << " has Boost!" << endl;
+    }
+};
+
 int main()
 {
     Card card1(king, diamonds, false);
